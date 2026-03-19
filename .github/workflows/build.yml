@@ -1,23 +1,26 @@
 name: mi primer build
 on:
   push:
-    branch: [feature]
+    branches: [feature]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3        # <-- CORRECTO
+        uses: actions/checkout@v3
+
       - name: login dockerhub
         uses: docker/login-action@v3
         with:
-          username: ${{secrets.DOCKERHUB_USERNAME}}
-          password: ${{secrets.DOCKERHUB_TOKEN}}
-      - name: build an push
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: |
-            ${{secrets.DOCKERHUB_USERNAME}}/mi-nginx:latest
-            ${{secrets.DOCKERHUB_TOKEN}}/mi-nginx:v${{github.run_number}}
+            ${{ secrets.DOCKERHUB_USERNAME }}/mi-nginx:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/mi-nginx:v${{ github.run_number }}
