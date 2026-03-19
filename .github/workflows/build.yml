@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: action/checkout@v4
+        uses: actions/checkout@v3        # <-- CORRECTO
       - name: login dockerhub
         uses: docker/login-action@v3
         with:
