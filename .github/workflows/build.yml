@@ -20,4 +20,4 @@ jobs:
           push: true
           tags: |
             ${{secrets.DOCKERHUB_USERNAME}}/mi-nginx:latest
-            ${{secrets.DOCKERHUB_TOKEN}}/mi-nginx:v${{github.rub_number}}
+            ${{secrets.DOCKERHUB_TOKEN}}/mi-nginx:v${{github.run_number}}
